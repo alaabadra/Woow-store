@@ -1,5 +1,5 @@
 BEGIN;
-DROP TABLE IF EXISTS products,cart,customer;
+DROP TABLE IF EXISTS products,cart,customer,transactions;
 CREATE TABLE customer(
 id SERIAL PRIMARY KEY,
 firstname VARCHAR,
