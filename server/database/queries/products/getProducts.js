@@ -6,4 +6,4 @@ const getAllProducts = () => {
   };
   return dbconnection.query(sql);
 };
-module.exports={getAllProducts}
+module.exports={getAllProducts};

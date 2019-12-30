@@ -4,7 +4,6 @@ const {getAllProducts} = require('../../database/queries/products/getProducts');
 module.exports =(req,res)=>{
     getAllProducts()
     .then(result=>{
-        console.log(6666,result.rows);
         if(result.rowCount){
             res.status(200).send({
                 error:null,
@@ -16,7 +15,6 @@ module.exports =(req,res)=>{
         }
         
     })
-    .catch(console.log)
-
-    
+    .catch(() => next({ code: 500, msg: 'sorry , found Inernal server error' }));
 }
+
