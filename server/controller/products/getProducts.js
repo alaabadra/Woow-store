@@ -7,7 +7,7 @@ module.exports =(req,res)=>{
         if(result.rowCount){
             res.status(200).send({
                 error:null,
-                allPosts:result.rows
+                AllProducts:result.rows
             })
         }else{
             res.status(400).send(JSON.stringify({ msg: 'Internal ServerError' }));
