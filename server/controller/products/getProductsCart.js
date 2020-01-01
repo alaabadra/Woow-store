@@ -1,5 +1,5 @@
 
-const {getProductsCart} = require('../../database/queries/products/getProductsCart');
+const {getProductsCart} = require('../../database/queries/products/index');
 
 module.exports =(req,res)=>{
     const {cartProductId}=req.params;
@@ -16,6 +16,9 @@ module.exports =(req,res)=>{
         }
         
     })
-    .catch(() => next({ code: 500, msg: 'sorry , exist Internal server error' }));
+    .catch(() => {
+        res.status(500).send(JSON.stringify({ msg: 'sorry , Internal server error ' }));
+
+    });
 }
 
