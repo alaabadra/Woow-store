@@ -4,7 +4,12 @@ const {getProducts,getProductsCart} = require('../controller/products/index');
 const {getNotifications,addNewNoification,patchNotifications} = require('../controller/notifications/index');
 const {getCheckout,addCheckout}=require('../controller/checkout/index');
 const {generatePayment}=require('../controller/transaction/index');
-const {addUser}= require('../controller/signup/index')
+const {addUser}= require('../controller/signup/index');
+const { authunticationLogin, authunticatinVerify,isAuthenticated,authunticationLogout} = require('../controller/authunticationLogin/index')
+
+router.post('/login', authunticationLogin);
+router.use(authunticatinVerify)
+router.get('/' ,isAuthenticated);
 router.get('/get-products',getProducts);
 router.post('/add-to-cart',addAproductToCart);
 router.get('/get-all-products-from-cart/:cartProductId',getProductsCart);
