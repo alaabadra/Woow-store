@@ -72,8 +72,8 @@ VALUES
     2
   ),
   (3, 'tomato', 'tomato.jpg', 8.99, '50lbs', 1, 1),
-  (4, 'tomato', 'tomato.jpg', 8.99, '50lbs', 1, 1),
-  (5, 'tomato', 'tomato.jpg', 8.99, '50lbs', 1, 1);
+  (4, 'potato', 'patato.jpg', 12, '65lbs', 1, 1),
+  (5, 'eggs', 'eggs.jpg', 7, '9lbs', 1, 1);
 
 INSERT INTO
   transactions (
