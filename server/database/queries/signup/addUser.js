@@ -1,12 +1,11 @@
 const dbconnection = require('../../config/db_connection');
 
-const addUser = (email, password ) => {
+module.exports=(customerId, firstname,lastname,email, password ) => {
   const sql = {
-    text: 'INSERT INTO customer(email, password) VALUES ( $1, $2 ) RETURNING *',
-    values: [email, password],
+    text: 'INSERT INTO customer(customer_id,firstname,lastname,email, password) VALUES ( $1, $2,$3,$4 ,$5) RETURNING *',
+    values: [customerId,firstname,lastname,email, password],
   };
   return dbconnection.query(sql);
 };
 
-module.exports = { addUser };
 

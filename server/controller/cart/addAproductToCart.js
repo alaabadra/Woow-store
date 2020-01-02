@@ -3,7 +3,6 @@ module.exports = (req, res) => {
     const { productName, productImg, productPrice, productSizes, customerId, cartProductId } = req.body;
     const { customer_id } = req.userInfoDec;
     if (customer_id) {
-      res.send({ success: true, data: customer_id });
       addAproductToCart(productName, productImg, productPrice, productSizes, customerId, cartProductId)
         .then(result => {
             if (result.rows[0]) {

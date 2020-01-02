@@ -5,7 +5,6 @@ module.exports = (req, res) => {
     const { cartProductId } = req.params;
     const { customer_id } = req.userInfoDec;
     if (customer_id) {
-        res.send({ success: true, data: customer_id });
         getProductsCart(cartProductId)
             .then(result => {
                 if (result.rowCount) {

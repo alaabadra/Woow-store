@@ -1,4 +1,4 @@
 module.exports=(req,res)=>{
     res.clearCookie();
-    res.send({data:'success'})
+    res.send({data:'success logout'})
 }

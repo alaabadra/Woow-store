@@ -4,7 +4,6 @@ const {getAllProducts} = require('../../database/queries/products/getProducts');
 module.exports =(req,res)=>{
     const { customer_id } = req.userInfoDec;
         if (customer_id) {
-            res.send({ success: true, data: customer_id });
             getAllProducts()
             .then(result=>{
                 if(result.rowCount){
