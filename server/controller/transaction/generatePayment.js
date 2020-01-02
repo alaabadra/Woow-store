@@ -2,6 +2,8 @@ const { getDataCustomer } = require('../../database/queries/customer/getDataCust
 const { addIntoTransaction } = require('../../database/queries/transaction/addIntoTransaction')
 module.exports = (req, res) => {
     const { email, password, idTransacion, numCard, price } = req.body;
+    const { customer_id } = req.userInfoDec;
+    if (customer_id) {
     getDataCustomer()
         .then((result) => {
             result.rows.map(el => {
@@ -26,4 +28,7 @@ module.exports = (req, res) => {
                 }
             })
         })
+    } else {
+        res.status(401).send(JSON.stringify({ msg: 'you not authrized in this page' }))
+    }
 }
