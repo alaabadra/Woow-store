@@ -1,7 +1,9 @@
 const { addAproductToCart } = require('../../database/queries/cart/index');
 module.exports = (req, res) => {
     const { productName, productImg, productPrice, productSizes, customerId, cartProductId } = req.body;
-    addAproductToCart(productName, productImg, productPrice, productSizes, customerId, cartProductId)
+    const { customer_id } = req.userInfoDec;
+    if (customer_id) {
+      addAproductToCart(productName, productImg, productPrice, productSizes, customerId, cartProductId)
         .then(result => {
             if (result.rows[0]) {
                 res.status(200).send({
@@ -22,5 +24,9 @@ module.exports = (req, res) => {
         .catch(() => {
             res.end()
         })
+    } else {
+      res.status(401).send(JSON.stringify({ msg: 'you not authrized in this page' }))
+    }
+    
 }
 

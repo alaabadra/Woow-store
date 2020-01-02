@@ -34,8 +34,14 @@ VALUES
     'tare',
     'bbb@hotmail.com',
     '$2a$05$rZ6MiHZcvdMzVwTyJsyJf.o.CXVgP0xt72NO0JzPL3o4uYtSfgJ9C'
+  ),
+  (
+    5,
+    'eng-alaa',
+    'bader',
+    'engineeralaa@gmail.com',
+    '$2a$05$sWby.qnZokVSoPhWK4Awreo93rnX4OpLUDEhti.cOs5vLCJ8cmqsq'
   );
-
 INSERT INTO
   cart (cart_id, cart_name, customer_cart_id)
 VALUES
@@ -86,5 +92,3 @@ INSERT INTO
 VALUES
   (1, 8.99, 'success', 1, 213322),
   (2, 100, 'Failed', 3, 656544);
-
-  
