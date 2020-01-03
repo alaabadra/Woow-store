@@ -44,9 +44,7 @@ export default class GetProducts extends React.Component {
         const { valueData } = this.state;
         return (
             <div>
-                {console.log('inside', customerTransactionsId)
-                }
-
+               
                 <div>all operations trans</div>
 
                 
@@ -57,7 +55,7 @@ export default class GetProducts extends React.Component {
                             return(
                                 <div>
                                 {console.log('jjjjj',item)}
-
+                                </div>
                             )
                 })
                 ):null}
