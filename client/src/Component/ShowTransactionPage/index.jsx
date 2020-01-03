@@ -1,132 +1,112 @@
 import React from 'react';
 import './style.css';
-import { Spinner} from 'react-bootstrap'
-import { Container, Alert, Card, Col, Row, Form, Button, Modal } from 'react-bootstrap'
+import { Spinner } from 'react-bootstrap'
+import { Container, Alert, Card, Col, Row, Form, Button, Modal, Table } from 'react-bootstrap'
 import { Link, Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-export default class Complaint extends React.Component {
-    state={
-        email:'',
-        password:'',
-        idTransacion:'',
-        numCard:'',
-        price:'',
-        msgSuccess:'',
-        status:''
+export default class ShowTransactionPage extends React.Component {
+    state = {
+        valueData: '',
+        idTransactions: '',
+        customerTransactionsId: '',
+        numCard: '',
+        price: '',
+        status: ''
     }
-    handleClick=(e)=>{
-
-        const {email,password,idTransacion,numCard,price,msgSuccess,status}=this.state;
-              fetch('/api/v1/generate-pay', {
-            method: 'POST',
+    componentDidMount() {
+        //   const {title,post}=this.state;
+        fetch('/api/v1/get-trans', {
+            method: 'GET',
             credentials: 'same-origin',
             headers: {
-              'Content-type': 'application/json',
+                'Content-type': 'application/json',
             },
-            body: JSON.stringify({
-              phone_num,
-              msg_comp,   
-              titlecomp
-            }),
-          })
+        })
             .then(res => {
-                return res.json();
+                console.log('resjson', res);
+
+                return res.json()
             })
-            .then(response=>{
-                if(response){
-                    console.log('success',response);
-                    this.setState({msgSuccess:'success'})
-                }
-            })
+            .then(response => {
+                console.log('ressssss', response);
+                let allTrans = response.AllTransaction
+                this.setState({ valueData: response.AllTransaction })
+                // allTrans.map(item => {
+
+                //     this.setState({ idTransactions: item.id_p_transactions, customerTransactionsId: item.customer_transactions_id, numCard: item.num_card, price: item.price, status: item.status })
+                // })
+
+            });
+            console.log('outside',this.state.customerTransactionsId);
+            
+
     }
-    componentDidMount(){
-        this.handleClick();
-        }
-        handleChange = ({ target: { value, name } }) =>
-        this.setState({ [name]: value });
-    render(){
-        const {titlecomp,msg_comp,phone_num,msgSuccess}=this.state;
-        console.log('mmmm',msg_comp);
-        console.log('titlecomp',titlecomp);
-        console.log('phone_numo',phone_num);
-        
-        return(
+    render() {
+        const { valueData, idTransactions, customerTransactionsId, numCard, price, status } = this.state;
+        return (
             <div>
-            <Form className="complaints">
-                            <div className="complaints_div">
-                            <h2 className="complaints_div_h2">يمكنك تقديم شكوك أو مشكلتك هنا</h2>
+                {console.log('inside', customerTransactionsId)
+                }
 
-                             </div>
+                <div>all operations trans</div>
 
-                            <Form.Group>
-                            <label className="comp-titlelabel"> :رقم الجوال</label>
-                            <input  type="text"
-                                name="phone_num"
-                                value={phone_num}
-                                placeholder="ادخل رقم الجوال"
-                                onChange={this.handleChange}
-                                className="comp-control"/>
-                            {/* <Form.Control
-                                type="number"
-                                name="phone_num"
-                                value={phone_num}
-                                placeholder="ادخل رقم الجوال"
-                                onChange={this.handleChange}
-                                className="comp-control"
-                            /> */}
-                            </Form.Group>
-                            <Form.Group>
-                            <label className="comp-titlelabel"> : عنوان المشكلة أو الشكوى </label>
-                           <input  type="text"
-                                name="titlecomp"
-                                value={titlecomp}
-                                placeholder="ادخل العنوان هنا"
-                                onChange={this.handleChange}
-                                className="comp-control"/>
-                            {/* <Form.Control
-                                type="text"
-                                name="titlecomp"
-                                value={titlecomp}
-                                placeholder="ادخل العنوان هنا"
-                                onChange={this.handleChange}
-                                className="comp-titlecontrol"
+                {/* <p >{idTransactions}</p>
+                <p >{customerTransactionsId}</p>
+                <p >{numCard}</p>
+                <p >{price}</p>
+                <p >{status}</p> */}
+                <Button>nsnnsn</Button>
+                <Table striped bordered hover size="sm">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>idTransactions</th>
+                            <th>customerTransactionsId</th>
+                            <th>numCard</th>
+                            <th>price</th>
+                            <th>status</th>
+                        </tr>
+                    </thead>
+                    {valueData ? (
 
-                            /> */}
-                            </Form.Group>
-                            <Form.Group>
-                            <label className="comp-titlelabel"> :ادخل رسالتك هنا  </label>
-                            <input  type="text"
-                                name="msg_comp"
-                                value={msg_comp}
-                                onChange={this.handleChange}
-                                className="comp-msgcontrol"/>
+                        valueData.map(item => {
                             
-                            </Form.Group>
- 
-                              <div>
+                            return(
+                                <div>
+                                {console.log('jjjjj',item.customer_transactions_id)}
 
-                              <button
-                                  type="button"
-                                  className="comp-filebtn comp-sbtn"
-                                >
-                                  أرفق ملفات
-                              </button>
-                              <button
-                                  type="button"
-                                  className="comp-filebtn comp-ssbtn"
-                                >
-                                  أضف رسالة صوتية
-                              </button>
-                              </div>
-                                 <Button
-                                  type="button"
-                                  className="comp-submitbtn"
-                                  onClick={this.handleClick}
-                                >
-                                  ارسال
-                              </Button>
-                              <p className="msg-success">{msgSuccess}</p>
-                          </Form>
-          </div>
+                              {this.setState({customerTransactionsId:item.customer_transactions_id})}
+
+                                <tbody>
+                                    <tr>
+                                        <td>{item.id_p_transactions}</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>{item.customer_transactions_id}</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>{item.price}</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>{item.status}</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>{item.numCard}</td>
+
+                                    </tr>
+                                </tbody>
+        
+    </div>)
+                })
+                ):null}
+                </Table>
+
+
+            </div>
+
         )
     }
 }
