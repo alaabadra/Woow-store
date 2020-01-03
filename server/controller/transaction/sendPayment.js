@@ -51,8 +51,8 @@ module.exports = (req, res) => {
     console.log(body);
 
   });
-  let paymentId=0505899375855053;
-  let Id = 0505899375855053;
+  let paymentId='0505899375855053';
+  let Id = '0505899375855053';
   const response = (id, idPay)=>{
 
   }
