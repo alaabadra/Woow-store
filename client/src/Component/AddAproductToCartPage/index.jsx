@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+// import './style.css';
 import { Spinner} from 'react-bootstrap'
 import { Container, Alert, Card, Col, Row, Form, Button, Modal } from 'react-bootstrap'
 import { Link, Route, Switch, BrowserRouter as Router } from 'react-router-dom';
@@ -68,14 +68,14 @@ export default class AddAproductToCartPage extends React.Component {
         
         return(
             <div>
-            <Form className="complaints">
-                            <div className="complaints_div">
-                            <h2 className="complaints_div_h2"> Add To Cart </h2>
+            <Form className="">
+                            <div className="">
+                            <h2 className=""> Add To Cart </h2>
 
                              </div>
 
                             <Form.Group>
-                            <label className="comp-titlelabel"> productId</label>
+                            <label className=""> productId</label>
                             <input  type="text"
                                 name="productId"
                                 value={productId}
@@ -84,7 +84,7 @@ export default class AddAproductToCartPage extends React.Component {
                         
                             </Form.Group>
                             <Form.Group>
-                            <label className="comp-titlelabel"> productName  </label>
+                            <label className=""> productName  </label>
                            <input  type="text"
                                 name="productName"
                                 value={productName}
@@ -93,7 +93,7 @@ export default class AddAproductToCartPage extends React.Component {
                            
                             </Form.Group>
                             <Form.Group>
-                            <label className="comp-titlelabel"> productImg </label>
+                            <label className=""> productImg </label>
                             <input  type="text"
                                 name="productImg"
                                 value={productImg}
@@ -103,7 +103,7 @@ export default class AddAproductToCartPage extends React.Component {
                             </Form.Group>
 
                             <Form.Group>
-                            <label className="comp-titlelabel">productPrice</label>
+                            <label className="">productPrice</label>
                             <input  type="text"
                                 name="productPrice"
                                 value={productPrice}
@@ -112,7 +112,7 @@ export default class AddAproductToCartPage extends React.Component {
                         
                             </Form.Group>
                             <Form.Group>
-                            <label className="comp-titlelabel">  productSizes </label>
+                            <label className="">  productSizes </label>
                            <input  type="text"
                                 name="productSizes"
                                 value={productSizes}
@@ -122,7 +122,7 @@ export default class AddAproductToCartPage extends React.Component {
                             </Form.Group>
 
                             <Form.Group>
-                            <label className="comp-titlelabel">customerId </label>
+                            <label className="">customerId </label>
                             <input  type="text"
                                 name="customerId"
                                 value={customerId}
@@ -131,7 +131,7 @@ export default class AddAproductToCartPage extends React.Component {
                         
                             </Form.Group>
                             <Form.Group>
-                            <label className="comp-titlelabel"> cartProductId </label>
+                            <label className=""> cartProductId </label>
                            <input  type="text"
                                 name="cartProductId"
                                 value={cartProductId}
