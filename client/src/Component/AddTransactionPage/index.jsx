@@ -5,17 +5,11 @@ import { Container, Alert, Card, Col, Row, Form, Button, Modal } from 'react-boo
 import { Link, Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 export default class AddTransactionPage extends React.Component {
     state={
-        email: '',
-        pass:'',
-        id_trans: '',
-        id_cust: '',
-        num_cart: '',
-        price: '',
-        status: ''
+        idTransacion:'',numCard:'', price:'',status:'',email:'',password:'',msgSuccess:''
     }
     handleClick=(e)=>{
 
-        const {email,pass,id_trans,id_cust,num_cart,price,status}=this.state;
+        const { idTransacion,numCard, price,status,email,password,msgSuccess}=this.state;
               fetch('/api/v1/generate-pay', {
             method: 'POST',
             credentials: 'same-origin',
@@ -23,19 +17,17 @@ export default class AddTransactionPage extends React.Component {
               'Content-type': 'application/json',
             },
             body: JSON.stringify({
-               email,pass, id_trans,id_cust,num_cart,price,status
+                idTransacion,numCard, price,status,email,password,msgSuccess
             }),
           })
             .then(res => {
-                console.log(111,res);
                 
-                // return res.json();
+                return res.json();
             })
             .then(response=>{
-                // if(response){
-                //     console.log('success',response);
-                //     this.setState({msgSuccess:'success'})
-                // }
+                if(response){
+                    this.setState({msgSuccess:'success'})
+                }
             })
     }
     componentDidMount(){
@@ -44,10 +36,8 @@ export default class AddTransactionPage extends React.Component {
         handleChange = ({ target: { value, name } }) =>
         this.setState({ [name]: value });
     render(){
-        const {email,pass,id_trans,id_cust,num_cart,price,status}=this.state;
-        console.log('idT',id_trans);
-        console.log('num_cart',num_cart);
-        console.log('price',price);
+        const { idTransacion,numCard, price,status,email,password,msgSuccess}=this.state;
+      
         
         return(
             <div>
@@ -60,19 +50,40 @@ export default class AddTransactionPage extends React.Component {
                             <Form.Group>
                             <label className="comp-titlelabel"> id AddTransactionPage</label>
                             <input  type="text"
-                                name="id_trans"
-                                value={id_trans}
+                                name="idTransacion"
+                                value={idTransacion}
                                 placeholder="enter id trans"
                                 onChange={this.handleChange}
                                 className="comp-control"/>
-                            {/* <Form.Control
-                                type="number"
-                                name="phone_num"
-                                value={phone_num}
-                                placeholder="ادخل رقم الجوال"
+                          
+                            </Form.Group>
+                            <Form.Group>
+                            <label className="comp-titlelabel"> numCard </label>
+                            <input  type="text"
+                                name="numCard"
+                                value={numCard}
                                 onChange={this.handleChange}
-                                className="comp-control"
-                            /> */}
+                                className="comp-msgcontrol"/>
+                            
+                            </Form.Group>
+                            <Form.Group>
+                            <label className="comp-titlelabel"> price </label>
+                            <input  type="text"
+                                name="price"
+                                value={price}
+                                onChange={this.handleChange}
+                                className="comp-msgcontrol"/>
+                            
+                            </Form.Group>
+                            <Form.Group>
+                            <label className="comp-titlelabel"> status</label>
+                           <input  type="text"
+                                name="status"
+                                value={status}
+                                placeholder="ادخل العنوان هنا"
+                                onChange={this.handleChange}
+                                className="comp-control"/>
+                           
                             </Form.Group>
                             <Form.Group>
                             <label className="comp-titlelabel"> email </label>
@@ -83,64 +94,23 @@ export default class AddTransactionPage extends React.Component {
                                 className="comp-msgcontrol"/>
                             
                             </Form.Group>
-                            <Form.Group>
-                            <label className="comp-titlelabel"> password </label>
-                            <input  type="text"
-                                name="pass"
-                                value={pass}
-                                onChange={this.handleChange}
-                                className="comp-msgcontrol"/>
-                            
-                            </Form.Group>
-                            <Form.Group>
-                            <label className="comp-titlelabel"> : id customer </label>
-                           <input  type="text"
-                                name="id_cust"
-                                value={id_cust}
-                                placeholder="ادخل العنوان هنا"
-                                onChange={this.handleChange}
-                                className="comp-control"/>
-                            {/* <Form.Control
-                                type="text"
-                                name="id_cust"
-                                value={titlecomp}
-                                placeholder="ادخل العنوان هنا"
-                                onChange={this.handleChange}
-                                className="comp-titlecontrol"
 
-                            /> */}
-                            </Form.Group>
                             <Form.Group>
-                            <label className="comp-titlelabel"> num num_cart </label>
+                            <label className="comp-titlelabel"> pass </label>
                             <input  type="text"
-                                name="num_cart"
-                                value={num_cart}
+                                name="password"
+                                value={password}
                                 onChange={this.handleChange}
                                 className="comp-msgcontrol"/>
                             
                             </Form.Group>
  
-                              <div>
-
-                              <button
-                                  type="button"
-                                  className="comp-filebtn comp-sbtn"
-                                >
-                                  أرفق ملفات
-                              </button>
-                              <button
-                                  type="button"
-                                  className="comp-filebtn comp-ssbtn"
-                                >
-                                  أضف رسالة صوتية
-                              </button>
-                              </div>
                                  <Button
                                   type="button"
                                   className="comp-submitbtn"
                                   onClick={this.handleClick}
                                 >
-                                  ارسال
+                                  send
                               </Button>
                               {/* <p className="msg-success">{msgSuccess}</p> */}
                           </Form>

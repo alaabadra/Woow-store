@@ -5,11 +5,152 @@ import { Container, Alert, Card, Col, Row, Form, Button, Modal } from 'react-boo
 import { Link, Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 export default class AddAproductToCartPage extends React.Component {
     state={
-
+        productId:'',
+        productName:'',   
+        productImg:'',
+        productPrice:'',
+        productSizes:'',
+        customerId:'',
+        cartProductId:'',
+        msg:''
     }
+    handleClick=(e)=>{
+
+        const {   productId,
+            productName,   
+            productImg,
+            productPrice,
+            productSizes,
+            customerId,
+            cartProductId,msg}=this.state;
+              fetch('/api/v1/add-to-cart', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+              'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                productId,
+                productName,   
+                productImg,
+                productPrice,
+                productSizes,
+                customerId,
+                cartProductId
+            }),
+          })
+            .then(res => {
+                return res.json();
+            })
+            .then(response=>{
+                if(response){
+                    this.setState({msg:'success'})
+                }else{
+                    this.setState({msg:'failed , pls sure your data vaild'})
+
+                }
+            })
+    }
+    componentDidMount(){
+        this.handleClick();
+        }
+        handleChange = ({ target: { value, name } }) =>
+        this.setState({ [name]: value });
     render(){
+        const {   productId,
+            productName,   
+            productImg,
+            productPrice,
+            productSizes,
+            customerId,
+            cartProductId,msg}=this.state;
+ 
+        
         return(
-            <div>AddAproductToCartPage</div>
+            <div>
+            <Form className="complaints">
+                            <div className="complaints_div">
+                            <h2 className="complaints_div_h2"> Add To Cart </h2>
+
+                             </div>
+
+                            <Form.Group>
+                            <label className="comp-titlelabel"> productId</label>
+                            <input  type="text"
+                                name="productId"
+                                value={productId}
+                                onChange={this.handleChange}
+                                className="comp-control"/>
+                        
+                            </Form.Group>
+                            <Form.Group>
+                            <label className="comp-titlelabel"> productName  </label>
+                           <input  type="text"
+                                name="productName"
+                                value={productName}
+                                onChange={this.handleChange}
+                                className="comp-control"/>
+                           
+                            </Form.Group>
+                            <Form.Group>
+                            <label className="comp-titlelabel"> productImg </label>
+                            <input  type="text"
+                                name="productImg"
+                                value={productImg}
+                                onChange={this.handleChange}
+                                className="comp-msgcontrol"/>
+                            
+                            </Form.Group>
+
+                            <Form.Group>
+                            <label className="comp-titlelabel">productPrice</label>
+                            <input  type="text"
+                                name="productPrice"
+                                value={productPrice}
+                                onChange={this.handleChange}
+                                className="comp-control"/>
+                        
+                            </Form.Group>
+                            <Form.Group>
+                            <label className="comp-titlelabel">  productSizes </label>
+                           <input  type="text"
+                                name="productSizes"
+                                value={productSizes}
+                                onChange={this.handleChange}
+                                className="comp-control"/>
+                           
+                            </Form.Group>
+
+                            <Form.Group>
+                            <label className="comp-titlelabel">customerId </label>
+                            <input  type="text"
+                                name="customerId"
+                                value={customerId}
+                                onChange={this.handleChange}
+                                className="comp-control"/>
+                        
+                            </Form.Group>
+                            <Form.Group>
+                            <label className="comp-titlelabel"> cartProductId </label>
+                           <input  type="text"
+                                name="cartProductId"
+                                value={cartProductId}
+                                onChange={this.handleChange}
+                                className="comp-control"/>
+                           
+                            </Form.Group>
+ 
+                            
+                                 <Button
+                                  type="button"
+                                  className="comp-submitbtn"
+                                  onClick={this.handleClick}
+                                >
+                                  send
+                              </Button>
+                              <p className="msg-success">{msg}</p>
+                          </Form>
+          </div>
         )
     }
 }

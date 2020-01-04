@@ -22,45 +22,68 @@ export default class GetProducts extends React.Component {
             },
         })
             .then(res => {
-                console.log('resjson', res);
 
                 return res.json()
             })
             .then(response => {
-                console.log('ressssss', response);
-                // let allTrans = response.AllTransaction
                 this.setState({ valueData: response.AllProducts })
-                // allTrans.map(item => {
-
-                //     this.setState({ idTransactions: item.id_p_transactions, customerTransactionsId: item.customer_transactions_id, numCard: item.num_card, price: item.price, status: item.status })
-                // // })
 
             });
-            console.log('outside',this.state.customerTransactionsId);
-            
+
 
     }
-    render(){
+    render() {
         const { valueData } = this.state;
         return (
             <div>
-                {console.log('inside', customerTransactionsId)
-                }
 
-                <div>all operations trans</div>
+                <div>all Products</div>
 
-                
-                    {valueData ? (
 
-                        valueData.map(item => {
-                            
-                            return(
-                                <div>
-                                {console.log('jjjjj',item)}
+                {valueData ? (
 
-                            )
-                })
-                ):null}
+                    valueData.map(item => {
+
+                        return (
+                            <div>
+
+
+                                {item ? (
+                                    <Card
+
+                                        onClick={this.handleOnClick}
+                                    >
+
+                                        <Card.Header>
+                                            <div>
+                                                cart_product_id <span >{item.cart_product_id}</span>
+                                                <br />
+                                                customer_id <span >{item.customer_id}</span>
+                                                product_id <span >{item.product_id}</span>
+                                            </div>
+                                            <span >
+                                                {item.product_price}
+                                            </span>
+
+                                        </Card.Header>
+                                        <Card.Body>
+                                            <Card.Text >
+                                                {item.product_name}
+                                            </Card.Text>
+                                            <Card.Text >
+                                                {item.product_image}
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
+                                ) : (
+                                        <div>
+                                            <Spinner animation="border" variant="info" />
+                                        </div>
+                                    )}
+                            </div>
+                        )
+                    })
+                ) : null}
 
 
             </div>
