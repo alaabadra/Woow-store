@@ -21,7 +21,6 @@ export default class ShowTransactionPage extends React.Component {
             },
         })
             .then(res => {
-                console.log('resjson', res);
 
                 return res.json()
             })
