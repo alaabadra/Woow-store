@@ -3,7 +3,7 @@ module.exports = (req, res) => {
     const { productName, productImg, productPrice, productSizes, customerId, cartProductId } = req.body;
     const { customer_id } = req.userInfoDec;
     if (customer_id) {
-      addAproductToCart(productName, productImg, productPrice, productSizes, customerId, cartProductId)
+    addAproductToCart(productName, productImg, productPrice, productSizes, customerId, cartProductId)
         .then(result => {
             if (result.rows[0]) {
                 res.status(200).send({
@@ -22,11 +22,11 @@ module.exports = (req, res) => {
 
         })
         .catch(() => {
-            res.end()
+            // res.end()
+            res.status(500).send(JSON.stringify({ msg: 'occure Internal ServerError, because your data is invalid' }));
+
         })
     } else {
-      res.status(401).send(JSON.stringify({ msg: 'you not authrized in this page' }))
+    res.status(401).send(JSON.stringify({ msg: 'you not authrized in this page' }))
     }
-    
 }
-
