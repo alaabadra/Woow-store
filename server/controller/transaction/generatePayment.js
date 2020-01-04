@@ -1,6 +1,6 @@
 const { getDataCustomer } = require('../../database/queries/customer/getDataCustomer.js');
 const { addIntoTransaction } = require('../../database/queries/transaction/addIntoTransaction')
-module.exports = (req, res) => {
+module.exports = (req, res, next) => {
     const { email, password, idTransacion, numCard, price } = req.body;
     const { customer_id } = req.userInfoDec;
     if (customer_id) {
@@ -22,13 +22,20 @@ module.exports = (req, res) => {
                                         error: null,
                                         msgSuccess: "success your operation payment"
                                     });
+                                } else {
+                                    res.status(500).send(JSON.stringify({ msg: 'Internal ServerError' }));
                                 }
                             })
+                            .catch(() => {
+                                res.status(500).send(JSON.stringify({ msg: 'occure Internal ServerError,pls sure valid data' }));
+
+                            }
+                            );
                     }
                 }
             })
         })
     } else {
-        res.status(401).send(JSON.stringify({ msg: 'you not authrized in this page' }))
+    res.status(401).send(JSON.stringify({ msg: 'you not authrized in this page' }))
     }
 }
