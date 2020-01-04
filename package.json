@@ -24,7 +24,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.4",
     "pg": "^7.16.1",
-    "request": "2.67.0"
+    "request": "2.68.0"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
