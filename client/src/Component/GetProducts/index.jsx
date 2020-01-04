@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+// import './style.css';
 import { Spinner } from 'react-bootstrap'
 import { Container, Alert, Card, Col, Row, Form, Button, Modal, Table } from 'react-bootstrap'
 import { Link, Route, Switch, BrowserRouter as Router } from 'react-router-dom';
@@ -13,7 +13,6 @@ export default class GetProducts extends React.Component {
         status: ''
     }
     componentDidMount() {
-        //   const {title,post}=this.state;
         fetch('/api/v1/get-products', {
             method: 'GET',
             credentials: 'same-origin',

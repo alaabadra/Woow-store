@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { Nav, NavItem, NavLink } from 'reactstrap';
 
-// import Signup from './Component/Signup';
+import Signup from './Component/Signup';
 import Login from './Component/Login';
 import GetProducts from './Component/GetProducts';
 import ShowTransactionPage from './Component/ShowTransactionPage';
@@ -44,13 +45,13 @@ class App extends Component {
         </div>
         <BrowserRouter>
           <Switch>
-            {/* <Route
-exact
-path="/signup"
-render={props => (
-<Signup />
-)}
-/> */}
+            <Route
+              exact
+              path="/signup"
+              render={props => (
+                <Signup />
+              )}
+            />
             <Route
               exact
               path="/login"

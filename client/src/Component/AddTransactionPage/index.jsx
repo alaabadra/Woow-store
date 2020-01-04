@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+// import './style.css';
 import { Spinner} from 'react-bootstrap'
 import { Container, Alert, Card, Col, Row, Form, Button, Modal } from 'react-bootstrap'
 import { Link, Route, Switch, BrowserRouter as Router } from 'react-router-dom';
@@ -41,14 +41,14 @@ export default class AddTransactionPage extends React.Component {
         
         return(
             <div>
-            <Form className="complaints">
-                            <div className="complaints_div">
-                            <h2 className="complaints_div_h2">generate payment page </h2>
+            <Form className="">
+                            <div className="">
+                            <h2 className="">generate payment page </h2>
 
                              </div>
 
                             <Form.Group>
-                            <label className="comp-titlelabel"> id AddTransactionPage</label>
+                            <label className=""> id AddTransactionPage</label>
                             <input  type="text"
                                 name="idTransacion"
                                 value={idTransacion}
@@ -58,7 +58,7 @@ export default class AddTransactionPage extends React.Component {
                           
                             </Form.Group>
                             <Form.Group>
-                            <label className="comp-titlelabel"> numCard </label>
+                            <label className=""> numCard </label>
                             <input  type="text"
                                 name="numCard"
                                 value={numCard}
@@ -67,7 +67,7 @@ export default class AddTransactionPage extends React.Component {
                             
                             </Form.Group>
                             <Form.Group>
-                            <label className="comp-titlelabel"> price </label>
+                            <label className=""> price </label>
                             <input  type="text"
                                 name="price"
                                 value={price}
@@ -76,7 +76,7 @@ export default class AddTransactionPage extends React.Component {
                             
                             </Form.Group>
                             <Form.Group>
-                            <label className="comp-titlelabel"> status</label>
+                            <label className=""> status</label>
                            <input  type="text"
                                 name="status"
                                 value={status}
@@ -86,7 +86,7 @@ export default class AddTransactionPage extends React.Component {
                            
                             </Form.Group>
                             <Form.Group>
-                            <label className="comp-titlelabel"> email </label>
+                            <label className=""> email </label>
                             <input  type="text"
                                 name="email"
                                 value={email}
@@ -96,7 +96,7 @@ export default class AddTransactionPage extends React.Component {
                             </Form.Group>
 
                             <Form.Group>
-                            <label className="comp-titlelabel"> pass </label>
+                            <label className=""> pass </label>
                             <input  type="text"
                                 name="password"
                                 value={password}
@@ -107,7 +107,7 @@ export default class AddTransactionPage extends React.Component {
  
                                  <Button
                                   type="button"
-                                  className="comp-submitbtn"
+                                  className=""
                                   onClick={this.handleClick}
                                 >
                                   send
