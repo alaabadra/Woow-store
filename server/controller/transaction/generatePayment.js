@@ -27,7 +27,7 @@ module.exports = (req, res, next) => {
                                 }
                             })
                             .catch(() => {
-                                res.status(500).send(JSON.stringify({ msg: 'occure Internal ServerError, because your data is invalid' }));
+                                res.status(500).send(JSON.stringify({ msg: 'occure Internal ServerError,pls sure valid data' }));
 
                             }
                             );
